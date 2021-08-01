@@ -1,0 +1,21 @@
+.paymentPage{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.paymentPage form{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border: 2px solid purple;
+    padding: 30px;
+}
+
+.paymentPage .msg{
+    margin: 10px;
+    border: 1px solid purple;
+    padding: 5px;
+}

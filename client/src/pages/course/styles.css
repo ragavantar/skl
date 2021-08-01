@@ -1,0 +1,8 @@
+.coursePage{
+    display: flex;
+    flex-direction: column;
+}
+
+.coursePage img{
+    width: 150px;
+}
