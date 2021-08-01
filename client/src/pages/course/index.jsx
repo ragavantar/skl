@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getCourseById } from '../../services';
+import { getCourseById, getMyCourses } from '../../services';
 
 import './styles.css';
 
@@ -8,38 +8,35 @@ const Course = () => {
     let { id } = useParams();
     let [data, setData] = useState({});
 
-    // useEffect(()=>{
-    //     let allCourses = JSON.parse(localStorage.getItem('allCourses'));
-    //     const course = allCourses.find(course => course.id == id)
-    //     setData(course);
-    // }, [])
-    useEffect(()=>{
-        getCourseById(id).then(setData);
+    useEffect(() => {
+        // check course is purchased
+        if (!getMyCourses().includes(id))
+            setData({ title: "You have not purchased this course" })
+        else
+            getCourseById(id).then(setData);
     }, [])
 
 
     const getFormattedLink = (link) => `https://www.youtube.com/embed/${link.split('/')[3]}`
 
     const { thumbnailURL, title, videoLink = [] } = data;
-    return ( 
+    return (
         <div className="coursePage">
             <div><Link to="/dashboard">Go Back To DashBoard</Link></div>
             <h2>{title}</h2>
             <img src={thumbnailURL} />
             <h3>Course Videos</h3>
-            {videoLink.map( link => 
-                <iframe 
-                key={link}
-                width="560" 
-                height="315" 
-                src={getFormattedLink(link)} 
-                title="YouTube video player" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen></iframe>
-                )}
+            {videoLink.map(link =>
+                <iframe
+                    key={link}
+                    src={getFormattedLink(link)}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen></iframe>
+            )}
         </div>
-     );
+    );
 }
- 
+
 export default Course;

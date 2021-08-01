@@ -15,29 +15,30 @@ import Course from './pages/course';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-      <Route path="/">
-          <Login />
-        </Route>
-      <Route path="/dashboard">
-          <Dashboard />
-        </Route>
-      <Route path="/payment/:id">
-          <Payment />
-        </Route>
-      <Route path="/course/:id">
-          <Course />
-        </Route>
-        <Route path="/">
-          <div className="App">
-            Page Not Found
-            <div><Link to="/">Go Back To Login Page</Link></div>
-          </div>
-        </Route>
-      </Switch>
-
-    </Router>
+    <div className="container">
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Login />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/payment/:id">
+            <Payment />
+          </Route>
+          <Route path="/course/:id">
+            <Course />
+          </Route>
+          <Route path="/">
+            <div className="App">
+              Page Not Found
+              <div><Link to="/">Go Back To Login Page</Link></div>
+            </div>
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

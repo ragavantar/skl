@@ -1,8 +1,21 @@
-.coursePage{
+.coursePage {
     display: flex;
     flex-direction: column;
 }
 
-.coursePage img{
+.coursePage img {
     width: 150px;
+}
+
+.coursePage iframe {
+    margin: 20px;
+    width: 560px;
+    height: 315px;
+}
+
+@media only screen and (max-width: 620px) {
+    .coursePage iframe {
+        width: 320px;
+        height: 240px;
+    }
 }
